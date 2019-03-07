@@ -1,6 +1,6 @@
-﻿$rdshost = "NLDCVTRDS002.vergeerholland.lan"
+﻿$rdshost = "your remote desktop"
 
-$RDCB = "NLDCVTRDS003.vergeerholland.lan"
+$RDCB = "broker"
 
 $id = Get-RDUserSession -ConnectionBroker $RDCB | select-object -expandproperty UnifiedSessionID
 
@@ -26,23 +26,22 @@ Restart-Computer -ComputerName $rdshost -Force
 }
 
 
-#!<--Script wat alles kapot maakt-->
+#script 
 
 
 Invoke-Command -ScriptBlock $disablelogin
 
 
-Wait-Event -Timeout 45  #tijd wanneer 1e bericht getoond wordt
+Wait-Event -Timeout 45  #time when you wanna starts users to log-off
 
 Invoke-Command -Scriptblock $message 
 
 
-Wait-Event -Timeout 25   #tijd wanneer die daadwerkelijk iedereen moet 
-
+Wait-Event -Timeout 25   #time to log-off 
 Invoke-Command -Scriptblock $logoff
 
 
 
-Wait-Event -Timeout 20
+Wait-Event -Timeout 20  #reboot
 
 Invoke-Command -Scriptblock $reboot
