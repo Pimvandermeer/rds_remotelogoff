@@ -32,16 +32,16 @@ Restart-Computer -ComputerName $rdshost -Force
 Invoke-Command -ScriptBlock $disablelogin
 
 
-Wait-Event -Timeout 45  #time when you wanna starts users to log-off
+Wait-Event -Timeout 45  #time when you wanna starts users to log-off  time in seconds
 
 Invoke-Command -Scriptblock $message 
 
 
-Wait-Event -Timeout 25   #time to log-off 
+Wait-Event -Timeout 25   #time to log-off    time in seconds
 Invoke-Command -Scriptblock $logoff
 
 
 
-Wait-Event -Timeout 20  #reboot
+Wait-Event -Timeout 20  #reboot   time in seconds
 
 Invoke-Command -Scriptblock $reboot
